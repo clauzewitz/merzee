@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentDao">
+
+<insert id="add" parameterType="student">
+	insert student(name,mobile,email,address,working,gender,point)
+	values (#{name},#{mobile},#{email},#{address},#{working2},#{gender},#{point})
+</insert>
+
+<select id="getStudentList" resultType="student">
+	select no, name, mobile, email, address , working as working2 , gender
+	from student
+	order by name
+</select>
+
+<delete id="remove" parameterType="long">
+	delete from student
+	where no=#{value}
+</delete>
+
+<select id="getStudent" parameterType="long" resultType="student">
+	select 
+		no, name, mobile, email, address, 
+		working as working2, 
+		gender, point
+	from student
+	where no=#{value}
+</select>
+
+<select id="getStudentByEmail" parameterType="string" resultType="student">
+	select 
+		no, name, mobile, email, address, 
+		working as working2, 
+		gender, point
+	from student
+	where email=#{value}
+</select>
+
+<update id="change" parameterType="student">
+	update student set
+		name=#{name},
+		mobile=#{mobile},
+		email=#{email},
+		address=#{address},
+		working=#{working2},
+		gender=#{gender},
+		point=#{point}
+	where no=#{no}
+</update>
+
+<select id="exist" parameterType="java.util.Map" resultType="boolean">
+	select if (count(email) > 0, 'true', 'false') as result
+	from student
+	where
+		email=#{email}
+		and passwd=#{passwd}
+</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

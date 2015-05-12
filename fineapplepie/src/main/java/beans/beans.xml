@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+    		xmlns:context="http://www.springframework.org/schema/context"
+       	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+	<!--
+	<context:annotation-config/>
+	-->
+	<context:component-scan base-package="beans"/>
+	
+	<!--  
+	<bean id="engine1" class="beans.Engine">
+	    <constructor-arg type="java.lang.String" value="V6"/>
+	</bean>
+	<bean id="engine2" class="beans.Engine">
+	    <constructor-arg type="java.lang.String" value="V12"/>
+	</bean>
+	
+	
+	<bean id="car5" class="beans.Car5">
+ 	    <property name="engine" ref="engine" />
+	</bean>
+	-->
+	<!-- 
+	<bean id="mybean1" class="beans.MyBean1"/>
+	<bean id="mybean2" class="beans.MyBean2">
+		<constructor-arg value="홍길동"/>
+	</bean>
+	<bean id="mybean3" class="beans.MyBean3">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="40"/>
+ 
+		<constructor-arg type="int" value="50"/>
+		<constructor-arg type="java.lang.String" value="홍길동"/>
+
+		<constructor-arg index="1" value="60"/>
+		<constructor-arg index="0" value="홍길동"/>
+	</bean>
+	<bean id="car" class="beans.CarFactory"
+	    factory-method="createInstance" 
+	    scope="prototype"/>
+    
+	<bean id="carFactory2" class="beans.CarFactory2"/>
+	<bean id="car2" 
+	    		factory-bean="carFactory2"
+	    		factory-method="createCar"
+	    		scope="prototype"/>
+	
+	<bean id="car3" class="beans.CarFactory3"/>
+	
+	<bean id="bean4" class="beans.MyBean4"
+	    init-method="init"
+	    destroy-method="destroy"/>
+	 -->
+	 
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

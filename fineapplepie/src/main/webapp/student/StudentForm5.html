@@ -1,0 +1,19 @@
+<form id="studentForm">
+번호: <input id="no" type="text" name="no" readonly="readonly"><br>
+이름: <input id="name" type="text" name="name"><br>
+모바일: <input id="mobile" type="text" name="mobile"><br>
+이메일: <input id="email" type="text" name="email"><br>
+주소: <textarea id="address" name="address" cols="50" rows="2"></textarea><br>
+재직: <select id="working" name="working">
+	<option value="true">재직중</option>
+	<option value="false">미취업</option>
+</select><br>
+성별: <input id="female" type="radio" name="gender" value="0" checked>여자 
+	 <input id="male" type="radio" name="gender" value="1">남자<br>
+<input id="addBtn" type="button" value="등록">
+<input id="updateBtn" type="button" value="변경">
+<input id="cancelBtn" type="reset" value="취소">
+</form>
+<script>
+	$('#updateBtn').css('display', 'none');
+</script>

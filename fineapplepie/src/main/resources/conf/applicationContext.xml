@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+		   http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+           
+	<description>생성할 빈에 대한 설정파일</description>
+	
+	<context:component-scan base-package="service"/>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+        <property name="locations" value="WEB-INF/jdbc.properties" />
+    </bean>  <!-- 암호같은저장하는 빈들.. ${jdbc.url} 로 사용했음..-->
+
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
+	    <property name="basePackage" value="dao" />
+	</bean>  <!-- 아이바티스가 자동으로 생성하는 dao -->
+	
+	<bean id="sqlSessionFactory"
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+	      <property name="dataSource" ref="dataSource"/>
+	      <property name="mapperLocations" value="classpath*:dao/**/*Mapper.xml"/>
+	      <property name="typeAliasesPackage" value="vo" />
+	</bean>
+	
+	<bean id="dataSource"
+        		class="org.apache.commons.dbcp.BasicDataSource"
+        		destroy-method="close" >
+        <property name="driverClassName" value="${jdbc.drivername}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+	
+</beans>
+
+

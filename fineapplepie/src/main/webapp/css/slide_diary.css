@@ -1,0 +1,42 @@
+﻿#section2 {
+  height:350px;
+  position:relative;
+}
+
+#slideshow, .slide {
+  margin-left:auto;
+  margin-right:auto;
+  width:200px;
+  height:250px;
+}
+
+.slide {
+	float: left;
+}
+
+.control {
+  width:39px;
+  height:40px;
+  text-indent:-10000px;
+  /*position:absolute;*/
+  cursor: pointer;
+}
+
+#l_btn {
+  position: absolute;
+  top: 125px;
+  left: 0px;
+  width: 28px;
+  height: 46px;
+}
+#r_btn {
+  position: absolute;
+  top: 125px;
+  right: 0px;
+  width: 28px;
+  height: 46px;
+}
+
+#add_dry {
+  float:right;
+}

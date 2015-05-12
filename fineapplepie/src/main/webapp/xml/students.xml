@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students [
+<!ELEMENT students (student*)>
+<!ELEMENT student (name,age,email+,tel*,address?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+
+<!ATTLIST student
+	no 		ID #REQUIRED
+	working 	(재직중|미취업|학생) "미취업"
+	gender	CDATA #IMPLIED>
+<!ATTLIST email
+	type	 (private|company) "company">
+<!ATTLIST tel
+	type CDATA #REQUIRED>
+]>
+<students>
+	<student no="s01" working="재직중"> <!-- 학생 정보 -->
+		<name>aaaa</name>
+		<age>20</age>
+		<email>test@test.com</email>
+		<email>test@test.com</email>
+		<tel type="home">111-1111</tel>
+		<tel type="comanpy">111-1111</tel>
+		<tel type="fax">111-1111</tel>
+		<address>경기도 용인시 기흥구</address>
+	</student>
+	<student no="s02"> <!-- 학생 정보 -->
+		<name>aaaa</name>
+		<age>20</age>
+		<email type="private">test@test.com</email>
+		<email>test@test.com</email>
+		<tel type="home">111-1111</tel>
+		<tel type="comanpy">111-1111</tel>
+		<tel type="fax">111-1111</tel>
+		<address>경기도 용인시 기흥구</address>
+	</student>
+</students>
+
+
+
+

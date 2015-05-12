@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders
+	xmlns="http://bitacademy.net/order"
+	xmlns:product="http://bitacademy.net/product"
+	xmlns:customer="http://bitacademy.net/customer">
+	<order>
+		<product:name>
+		</product:name>
+		<customer:name>
+		</customer:name>
+	</order>
+</orders>

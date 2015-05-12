@@ -1,0 +1,166 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-type" />
+<link href="css/select_diary.css" rel="stylesheet" />
+<link href="css/slide_diary.css" rel="stylesheet" />
+<script src="js/jquery-1.9.0.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.1.custom.js"></script>
+<script type="text/javascript" src="js/jquery.ui.dialog.js"></script>
+<script type="text/javascript" src="js/jquery.nailthumb.1.1.js"></script>
+<script type="text/javascript" src="js/select_diary.js"></script>
+<script type="text/javascript" src="js/slide_diary.js"></script>
+<script type="text/javascript" src="js/preview.js"></script>
+<script type="text/javascript" src="js/diaryDao.js"></script>
+<script type="text/javascript" src="js/diary.js"></script>
+
+<title>select_diary</title>
+
+<style>
+    #dry_photo {
+		width: 150px;
+		height: 150px;
+		border: 1px solid #bebebe;
+		background-image: url(imgs/noimg.png);
+	}
+</style>
+</head>
+<body>
+    <!--<div id="logout_dialog" class="dialog_div" title="Logout">
+	    <span id="logout_close" class="button bClose">X</span>
+		<div class="dialog_title">Logout</div>
+		<br />
+		<div class="dialog_form">
+		    <span class="form_title">로그 아웃 하시겠습니까?</span>	
+		</div>
+		<div class="dialog_button">
+			<input type="button" class="button" value="logout" onclick="logout()">
+		</div>
+	</div>-->
+	<div>
+		<div id="sponge1" class="sponge">
+			<img src="imgs/ani_sponge_left.gif" width="12" height="28" />
+		</div>
+		<div id="sponge2" class="sponge">
+			<img src="imgs/ani_star_left.gif" width="17" height="31" />
+		</div>
+		<div id="sponge3" class="sponge">
+			<img src="imgs/ani_tentacles_left.gif" width="16" height="31" />
+		</div>
+		<div id="sponge4" class="sponge">
+			<img src="imgs/ani_cheeks_left.gif" width="23" height="31" />
+		</div>
+		<div id="sponge5" class="sponge">
+			<img src="imgs/ani_krabs_left.gif" width="15" height="29" />
+		</div>
+		<div id="sponge6" class="sponge">
+			<img src="imgs/ani_plankton_left.gif" width="8" height="21" />
+		</div>
+		<div id="sponge7" class="sponge">
+			<img src="imgs/ani_snail_left.gif" width="20" height="16" />
+		</div>
+		<div id="sponge8" class="sponge">
+			<img src="imgs/ani_jellyfish.gif" width="15" height="19" />
+		</div>
+	</div>
+	    <div id="deepsea_rock">
+		    <img src="imgs/deepsea_rock.png" width="1652" height="551" />
+	    </div>
+	    <div id="cheston">
+		    <img src="imgs/chest_on1.png" width="70" height="71" />
+	    </div>
+	    <div id="cheston2">
+		    <img src="imgs/chest_on2.png" width="70" height="71" />
+	    </div>
+	    <div id="chestoff">
+		    <img src="imgs/chest_off.png" width="70" height="71" />
+	    </div>	
+	    <div id="sbhouse">
+		    <img src="imgs/sbhouse.png" width="141" height="223" />
+	    </div>
+<!-- 	    <div id="sqhouse"> -->
+<!-- 		    <img src="imgs/sqhouse.png" width="134" height="242" /> -->
+<!-- 	    </div>	    	    	    	 -->
+	    <div id="fish1movearea" class="fisharea">
+		    <div id="fish1" class="fish"><img src="imgs/fish1_1.png"/></div>
+	    </div>
+	    <div id="fish2movearea" class="fisharea">
+		    <div id="fish2" class="fish"><img src="imgs/fish2_1.png"/></div>
+	    </div>
+	    <div id="fish3movearea" class="fisharea">
+		    <div id="fish3" class="fish"><img src="imgs/fish3_1.png"/></div>
+	    </div>
+	    <div id="fish4movearea" class="fisharea">
+		    <div id="fish4" class="fish"><img src="imgs/fish4_1.png"/></div>
+	    </div>
+	    <div id="fish5movearea" class="fisharea">
+		    <div id="fish5" class="fish"><img src="imgs/fish5_1.png"/></div>
+	    </div>
+	<div id="allsection">
+		<div id="section1" class="section">
+			<img id="logo" src="imgs/merzee_white.png" width="231" height="60" />
+			<a id="logoutText" class="menu" onclick="logout()">Logout&nbsp;</a><a id="menuText"
+				class="menu">My Page&nbsp;&nbsp;&nbsp;</a>
+		</div>
+		<div id="section2" class="section">
+            <p>
+                <span class="sec_title_txt">Merzee Select</span><span id="add_dry">add</span>
+            </p>
+			<div id="slideshow">
+				<div id="slideInner"></div>
+            </div>
+            <div id="l_btn">
+            </div>
+            <div id="r_btn">
+            </div>
+		</div>
+		<div id="section3" class="section">
+			<p class="sec_title_txt">Notice</p>					
+		</div>
+	</div>
+    <div id="add_dialog" class="dialog_div" title="Create Diary">
+		<span id="add_close" class="button bClose">X</span>
+		<div class="dialog_title">Create Merzee</div>
+		<br />
+		<form name="add_Dry" action="merzeediary.do" method="post" enctype="multipart/form-data">
+		<div class="dialog_form">
+			<div class="dialog_form_mini_left">
+                <span class="form_title">Photo:</span><br />
+                <div id="dry_photo">
+                    <output id="list">
+                    </output>
+                </div>
+                <div class="file_input_div">                    
+                    <input type="button" class="button  file_input_button" value="Search files" />
+                    <input type="file" class="file_input_hidden" id="files" name="files" multiple />
+                        <!--<input type="file" class="file_input_hidden" name="f_dry_photo[]" id="f_dry_photo" multiple />-->
+                        <!--<input type="file" class="file_input_hidden" id="File1" onchange="$('#dry_photo').attr('src', $('#f_dry_photo').val());" />-->
+                    <!--<input type="file" class="file_input_hidden" id="f_dry_photo" onchange="this.select(); $('#dry_photo').attr('src', document.selection.createRange().text.toString());" />-->
+                </div>
+                
+			</div>
+			<div class="dialog_form_mini_right">
+                <span class="form_title">Title:</span><br /> 
+			    <input name="dry_name" class="dialog_input_mini" type="text" id="dry_name" placeholder="My Merzee"/>
+				<span class="form_title">Type:</span><br /> 
+                <select id="type" name="type" style="width: 80px; float: left;"
+							class="join_selectBox">
+                    <option value="1" selected="selected">일반</option>
+                    <option value="2">우정</option>
+                    <option value="3">커플</option>
+                </select>
+			</div>
+		</div>
+		<!--<div id="chk_err_msg" title="test">
+			<span><img src="imgs/err_msg.png"></span>
+			<span id="short_txt">test</span>
+		</div>-->
+		<div class="dialog_button">
+			<!-- <input type="submit" class="button" value="Add" > -->
+			<input type="button" class="button" value="Add" onclick="formCheck();">
+			<input type="button" class="button" value="Cancel" onclick="clearForm();">
+		</div>
+		</form>
+	</div>
+</body>
+</html>

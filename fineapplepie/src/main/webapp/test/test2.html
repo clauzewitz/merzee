@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nandakim</title>
+<script>
+	window.onload = function() {
+		document.getElementById("dataLoad").onclick = function() {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(event) {
+				//요청 상태가 바뀔때 마다 호출될
+				//xhr.readState == 1  초기화 ,2 요청중, 3.데이터 받는중,  4.데이터 수신완료
+				console.log(xhr.readyState);
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						//var students = eval( '(' + xhr.responseText + ')');
+						var students = JSON.parse(xhr.responseText);
+						var studentTable = document.getElementById("studentTable");
+						for(var i in students){
+							studentTable.appendChild(createTR(students[i]));			
+						}
+					} else {
+						document.getElementById("studentList")
+						.innerHTML = "서버 데이터 수신 오류..";
+					}
+				}
+			}
+			xhr.open('GET', 'test2.jsp', true);
+			xhr.send();
+		}
+	}
+	
+	function createTR(student){
+		var tr = document.createElement("tr");
+		tr.appendChild( createTD(student.no) );
+		tr.appendChild( createTD(student.name) );
+		tr.appendChild( createTD(student.tel) );
+		return tr;		
+	}
+	function createTD(value){
+		var td = document.createElement("td");
+		td.innerHTML = value;
+		return td;
+	}
+</script>
+
+</head>
+<body>
+	<input id="dataLoad" type="button" value="가져오기">
+	<h1>학생목록</h1>
+	<div id="studentList">
+	<table id="studentTable">
+	<tr>
+	<th>번호</th>
+	<th>이름</th>
+	<th>전화</th>
+	</tr>
+	</table>	
+	</div>
+</body>
+</html>

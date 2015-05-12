@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT students (student*)>
+<!ELEMENT student (name,age,email+,tel*,address?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+
+<!ATTLIST student
+	no 		ID #REQUIRED
+	working 	(재직중|미취업|학생) "미취업"
+	gender	CDATA #IMPLIED>
+<!ATTLIST email
+	type	 (private|company) "company">
+<!ATTLIST tel
+	type CDATA #REQUIRED>
